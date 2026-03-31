@@ -7,7 +7,6 @@ class ExpensesList extends StatelessWidget{
   required this.expenses});
 
   final List<Expense> expenses;
-
   @override
   Widget build(BuildContext context) {
  return ListView.builder(
