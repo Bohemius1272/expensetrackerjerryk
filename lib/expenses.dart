@@ -21,14 +21,14 @@ class _ExpensesState extends State<Expenses>{
     ),
 
     Expense(
-    title: "Plane ticket to Moldova", 
+    title: "Train ticket to Orlando, FL", 
     amount: 15.25, 
     date: DateTime.now(), 
     category: Category.travel
     ),
 
      Expense(
-    title: "Tung Tung Tung Sahur body pillow", 
+    title: "Ticket to the NYIT movie", 
     amount: 6.70, 
     date: DateTime.now(), 
     category: Category.leisure
@@ -38,6 +38,16 @@ class _ExpensesState extends State<Expenses>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Expense Tracker"),
+        actions: [
+          IconButton(icon: const Icon(Icons.add), 
+          onPressed:(){
+            
+          } ,
+          )
+        ]
+      ),
       body: Column(
         children: [
           Text("CHART GOES HERE"),
