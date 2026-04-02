@@ -1,5 +1,6 @@
 import 'package:expensetrackerjerryk/widgets/expenses_list/expenses_list.dart';
 import 'package:expensetrackerjerryk/models/expense.dart';
+import 'package:expensetrackerjerryk/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
 class Expenses extends StatefulWidget{
@@ -11,6 +12,11 @@ class Expenses extends StatefulWidget{
   }
 }
 class _ExpensesState extends State<Expenses>{
+  void _openAddExpenseOverlay(){
+    showModalBottomSheet(
+      context: context, 
+      builder: (ctx) => NewExpense());
+  }
   final List<Expense> _registeredExpenses = [
 
     Expense(
@@ -42,11 +48,9 @@ class _ExpensesState extends State<Expenses>{
         title: const Text("Expense Tracker"),
         actions: [
           IconButton(icon: const Icon(Icons.add), 
-          onPressed:(){
-            
-          } ,
+          onPressed:_openAddExpenseOverlay,
           )
-        ]
+        ],
       ),
       body: Column(
         children: [
