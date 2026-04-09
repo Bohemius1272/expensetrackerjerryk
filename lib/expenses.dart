@@ -10,36 +10,44 @@ class Expenses extends StatefulWidget{
   State<StatefulWidget> createState() {
     return _ExpensesState();
   }
+
 }
 class _ExpensesState extends State<Expenses>{
   void _openAddExpenseOverlay(){
     showModalBottomSheet(
       context: context, 
-      builder: (ctx) => NewExpense());
+      builder: (ctx) => NewExpense(
+        onAddExpense:_addExpense));
+  }
+  void _addExpense(Expense expense){
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
+  }
+  void _removeExpense(Expense expense){
+    setState(() {
+      _registeredExpenses.remove(expense);
+    });
   }
   final List<Expense> _registeredExpenses = [
-
     Expense(
     title: "Mixue", 
     amount: 25.00, 
     date: DateTime.now(), 
     category: Category.food
     ),
-
     Expense(
     title: "Train ticket to Orlando, FL", 
     amount: 15.25, 
     date: DateTime.now(), 
     category: Category.travel
     ),
-
      Expense(
     title: "Ticket to the NYIT movie", 
     amount: 6.70, 
     date: DateTime.now(), 
     category: Category.leisure
     ),
-    
   ];
   @override
   Widget build(BuildContext context) {
@@ -56,10 +64,11 @@ class _ExpensesState extends State<Expenses>{
         children: [
           Text("CHART GOES HERE"),
           Expanded(
-          child: ExpensesList(expenses:_registeredExpenses)),
+          child: ExpensesList(
+            onRemoveExpense: _removeExpense,
+            expenses:_registeredExpenses)),
         ],
     ),
     );
   }
-
 }
