@@ -1,4 +1,6 @@
+import 'package:expensetrackerjerryk/widgets/chart/chart.dart';
 import 'package:expensetrackerjerryk/widgets/expenses_list/expenses_list.dart';
+import 'package:expensetrackerjerryk/widgets/expenses_list/expense_item.dart';
 import 'package:expensetrackerjerryk/models/expense.dart';
 import 'package:expensetrackerjerryk/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +87,7 @@ class _ExpensesState extends State<Expenses>{
       ),
       body: Column(
         children: [
-          Text("CHART GOES HERE"),
+          Chart(expenses: _registeredExpenses),
           Expanded(child: mainContent),
         ],
     ),
